@@ -2,7 +2,7 @@
   <p id="notice"><%= flash[:notice] %></p>
     <% if @book.errors.any? %>
       <div id="error explanation">
-        <h3><%= @book.errors.count %>errors prohibited this obj from being saved:</h3>
+        <h3><%= @book.errors.count %> errors prohibited this obj from being saved:</h3>
           <ul>
             <% @book.errors.full_messages.each do |message| %>
               <li><%= message %></li>
@@ -16,25 +16,27 @@
       <div class='col-md-3'>
         <h2>User info</h2>
         <!-- モックのため、固定値や未実装になっている部分があります。アプリ完成前に修正しましょう。 -->
-        <table class='table'>
+         <table class='table'>
           <tr>
             <%= attachment_image_tag @user, :profile_image, :fill, 100, 100, fallback: "default-image.jpg" %> <!-- 固定値 -->
           </tr>
           <tr>
             <th>name</th>
-            <th>DMM太郎</th>  <!-- 固定値 -->
+            <th><%= @user.name %></th>  <!-- 固定値 -->
           </tr>
           <tr>
             <th>introduction</th>
-            <th></th>  <!-- 固定値 -->
+            <th><%= @user.introduction %></th>  <!-- 固定値 -->
           </tr>
-        </table>
+         </table>
         <div class='row'>
-          <% if @user.id == current_user.id %>
-           <%= link_to "プロフィール編集", edit_user_path(@user) %>
-          <% end %>
+
+            <%= link_to edit_user_path(@user), class: "btn btn-outline-secondary btn-block" do %>
+             <i class="fas fa-user-cog"></i>
+            <% end %>
           <!-- 編集リンクが未実装 -->
         </div>
+
         <h2 class="mt-3">New book</h2>
          <%= form_with model: @book, local:true do |f| %>
           <div class="form-group">
@@ -43,10 +45,10 @@
           </div>
           <div class="form-group">
            <label for="book_opnion">Opinion</label>
-           <%= f.text_area :body,class: "form-control book-body" %>
+           <%= f.text_area :body, class: "form-control book-body" %>
           </div>
           <div class="form-group">
-           <%= f.submit 'Create Book',class: "btn btn-sucsess" %>
+           <%= f.submit 'Create Book', class: "btn btn-success" %>
           </div>
          <% end %>
         <!-- form_withを用いて新規投稿フォームを作成しましょう。 -->
@@ -63,13 +65,13 @@
             </tr>
           </thead>
           <tbody>
-            <tr>
              <% @users.each do |user| %>
-              <td><%= attachment_image_tag @user, :profile_image, :fill, 80, 80, fallback: "default-image.jpg" %></td>
-              <td><%= user.name %></td>
-              <td><%= link_to "Show", users_path %></td>
+                <tr>
+                  <td><%= attachment_image_tag user, :profile_image, :fill, 80, 80, fallback: "default-image.jpg" %></td>
+                  <td><%= user.name %></td>
+                  <td><%= link_to "Show", user_path(user.id) %></td>
+                </tr>
              <% end %>
-            </tr>
           </tbody>
         </table>
       </div>
