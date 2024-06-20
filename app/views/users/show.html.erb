@@ -1,86 +1,38 @@
 <main>
-  <p id="notice"><%= flash[:notice] %></p>
-  <% if @book_new.errors.any? %>
-      <div id="error explanation">
-        <h3><%= @book_new.errors.count %> errors prohibited this obj from being saved:</h3>
-          <ul>
-            <% @book_new.errors.full_messages.each do |message| %>
-              <li><%= message %></li>
-            <% end %>
-          </ul>
-      </div>
-    <% end %>
-  <div class='container px-5 px-sm-0'>
-    <div class='row'>
-      <div class='col-md-3'>
-        <h2>User info</h2>
-        <!-- モックのため、固定値や未実装になっている部分があります。アプリ完成前に修正しましょう。 -->
+    <p id="notice"><%= flash[:notice] %></p>
+
+    <div class='container px-5 px-sm-0'>
+      <div class='row'>
+        <div class='col-md-3'>
+          <h2>プロフィール</h2>
         <table class='table'>
           <tr>
-            <%= attachment_image_tag @user, :profile_image, :fill, 100, 100, fallback: "default-image.jpg" %>  <!-- 固定値 -->
+            <%= attachment_image_tag @user, :profile_image, :fill, 100, 100, fallback: "default-image.jpg", class:"rounded-circle" %> <!-- 固定値 -->
           </tr>
           <tr>
-            <th>name</th>
             <th><%= @user.name %></th>  <!-- 固定値 -->
           </tr>
           <tr>
-            <th>introduction</th>
-            <th><%= @user.introduction %></th>  <!-- 固定値 -->
+            <td><%= @user.introduction %></td>  <!-- 固定値 -->
           </tr>
         </table>
         <div class='row'>
-          <%= link_to edit_user_path(current_user.id), class:"btn btn-outline-secondary btn-block" do %>
-            <i class="fas fa-user-cog"></i>
-          <% end %> <!-- 編集リンクが未実装 -->
+          <%= link_to edit_user_path(@user), class: "btn btn-outline-secondary btn-block" do %>
+            <i class="fas fa-user-cog"></i>編集
+          <% end %>
         </div>
-        <h2 class="mt-3">New book</h2>
-         <%= form_with model: @book_new, local:true do |f| %>
-          <div class="form-group">
-           <label for="book title">Title</label>
-           <%= f.text_field :title, class: "form-control book-title" %>
-          </div>
-          <div class="form-group">
-           <label for="book_opnion">Opinion</label>
-           <%= f.text_area :body, class: "form-control book-body" %>
-          </div>
-          <div class="form-group">
-           <%= f.submit 'Create Book',class: "btn btn-success" %>
-          </div>
-         <% end %>
-        <!-- form_withを用いて新規投稿フォームを作成しましょう。 -->
-      </div>
 
-      <div class='col-md-8 offset-md-1'>
-        <h2>Books</h2>
-        <!-- 投稿した書籍一覧表示を作成しましょう。 -->
-        <table class='table table-hover table-inverse'>
-          <thead>
-            <tr>
-              <th></th>
-              <th>Title</th>
-              <th>Opinion</th>
-              <th colspan="3"></th>
-            </tr>
-          </thead>
-          <tbody>
-            <% @books.each do |book| %>
-               <tr>
-                  <td>
-                    <%= link_to user_path(@user.id) do %>
-                      <%= attachment_image_tag @user, :profile_image, :fill, 80, 80, fallback: "default-image.jpg" %>
-                    <% end %>
-                  </td>
-                  <td>
-                    <%= link_to book_path(book.id) do %>
-                      <%= book.title %>
-                    <% end %>
-                  </td>
-                  <td><%= book.body %></td>
-               </tr>
-           <% end %>
-          </tbody>
-        </table>
+    　　  　<div class='row'>
+            <%= link_to "新規投稿", new_post_relax_path(@post_relax), class: "btn btn-success btn-block" %>
+          </div>
+          <!-- form_withを用いて新規投稿フォームを作成しましょう。 -->
+        </div>
+
+        <div class='col-md-8 offset-md-1'>
+          <h2>あなたの投稿</h2>
+          <!-- 投稿した書籍一覧表示を作成しましょう。 -->
+          <%= render 'post_relaxes/list', post_relaxes: @post_relaxes %>
+        </div>
       </div>
-    </div>
   </div>
 </main>

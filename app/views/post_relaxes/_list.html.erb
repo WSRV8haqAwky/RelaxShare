@@ -1,0 +1,28 @@
+
+  <div class="card-list-container">
+    <div class="row">
+      <% post_relaxes.each do |post_relax| %>
+        <div class="col-lg-6 col-md-8 col-sm-10 mt-5">
+          <div class="card mx-auto shadow-lg h-100">
+            <%= attachment_image_tag post_relax, :image, class:"card-img-top",fallback: "default-image.jpg"; %>
+              <div class="card-body">
+                <div class="row">
+                  <div class="col-3">
+                    <%= attachment_image_tag post_relax.user, :profile_image, :fill, 60, 60, fallback: "default-image.jpg", size: '60x60', class:"mt-3 rounded-circle"; %>
+                  </div>
+                  <div class="col-9">
+                    <p class="card-text"><%= link_to post_relax.caption, post_relax_path(post_relax.id),class:"text-dark" %></p>
+                    <span><i class="fas fa-user"></i><%= post_relax.user.name %> ｜ </span>
+                    <span><%= "#{post_relax.post_comments.count} コメント" %></span>
+                  </div>
+                </div>
+              </div>
+          </div>
+        </div>
+      <% end %>
+    </div>
+    <div>
+      <%= paginate post_relaxes %>
+    </div>
+  </div>
+

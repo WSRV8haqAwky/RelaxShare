@@ -1,0 +1,38 @@
+<main>
+  <p id="notice"></p>
+    <div class='container'>
+     <div class='row'>
+      <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
+       <h1>投稿編集</h1>
+        <% if @post_relax.errors.any? %>
+          <div id="error explanation">
+            <h3><%= @post_relax.errors.count %> errors prohibited this obj from being saved:</h3>
+              <ul>
+                <% @post_relax.errors.full_messages.each do |message| %>
+                  <li><%= message %></li>
+                <% end %>
+              </ul>
+          </div>
+        <% end %>
+
+        <%= form_with model:@post_relax, local:true do |f| %>
+
+          <div class="form-group">
+            <label for="post_image">画像</label>
+            <%= f.attachment_field :image %>
+          </div>
+          <div class="form-group">
+           <label for="post-caption">説明</label>
+           <%= f.text_area :caption, class: "form-control" %>
+          </div>
+          <div class="form-group">
+           <%= f.submit "更新", class:"btn btn-success" %>
+          </div>
+        <% end %>
+
+        <%= link_to "投稿詳細", post_relax_path(@post_relax.id) %>
+        |
+        <%= link_to "戻る", post_relaxes_path %>
+      </div>
+    </div>
+</main>

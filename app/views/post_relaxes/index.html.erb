@@ -1,0 +1,31 @@
+ <div class='container px-5 px-sm-0'>
+    <div class='row'>
+      <div class='col-md-3'>
+        <h2 class="mt-3">プロフィール</h2>
+        <table class='table'>
+          <tr>
+            <%= attachment_image_tag @user, :profile_image, :fill, 100, 100, fallback: "default-image.jpg", class:"rounded-circle" %> <!-- 固定値 -->
+          </tr>
+          <tr>
+            <th><%= @user.name %></th>  <!-- 固定値 -->
+          </tr>
+          <tr>
+            <td><%= @user.introduction %></td>  <!-- 固定値 -->
+          </tr>
+        </table>
+        <div class='row'>
+          <%= link_to edit_user_path(@user), class: "btn btn-outline-secondary btn-block" do %>
+            <i class="fas fa-user-cog"></i>編集
+          <% end %>
+        </div>
+　　　　<div class='row'>
+          <%= link_to "新規投稿", new_post_relax_path(@post_relax), class: "btn btn-success btn-block" %>
+        </div>
+      </div>
+
+      <div class='col-md-8 offset-md-1'>
+         <h2 class="mt-3">みんなの投稿</h2>
+         <%= render 'post_relaxes/list', post_relaxes: @post_relaxes %>
+      </div>
+    </div>
+  </div>

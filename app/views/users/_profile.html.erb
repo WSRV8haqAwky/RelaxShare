@@ -1,0 +1,19 @@
+
+        <!-- モックのため、固定値や未実装になっている部分があります。アプリ完成前に修正しましょう。 -->
+        <table class='table'>
+          <tr>
+            <%= attachment_image_tag user, :profile_image, :fill, 100, 100, fallback: "default-image.jpg", class:"rounded-circle" %> <!-- 固定値 -->
+          </tr>
+          <tr>
+            <th><%= user.name %></th>  <!-- 固定値 -->
+          </tr>
+          <tr>
+            <td><%= user.introduction %></td>  <!-- 固定値 -->
+          </tr>
+        </table>
+        <div class='row'>
+          <%= link_to edit_user_path(user), class: "btn btn-outline-secondary btn-block" do %>
+            <i class="fas fa-user-cog"></i>編集
+          <% end %>
+        </div>
+
