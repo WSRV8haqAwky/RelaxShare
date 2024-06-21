@@ -1,32 +1,32 @@
-<main>
+<main class="bg-light">
   <p id="notice"><%= flash[:notice] %></p>
   <div class='container'>
     <div class='row'>
-      <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0">
-        <h2>Sign up</h2>
+      <div class="col-sm-12 col-md-8 col-lg-5 px-sm-0 py-5">
+        <h2>新規登録</h2>
         <%= form_with model: @user, url: user_registration_path, local: true do |f| %>
           <%= render "devise/shared/error_messages", resource: resource %>
           <div class="field">
-            <%= f.label :name %><br />
+            <%= f.label :ユーザー名 %><br />
             <%= f.text_field :name, autofocus: true, autocomplete: "name" %>
           </div>
           <div class="field">
-            <%= f.label :email %><br />
+            <%= f.label :eメールアドレス %><br />
             <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
           </div>
           <div class="field">
-            <%= f.label :password %>
+            <%= f.label :パスワード %>
             <% if @minimum_password_length %>
-            <em>(<%= @minimum_password_length %> characters minimum)</em>
+            <b>(<%= @minimum_password_length %> 文字以上)</b>
             <% end %><br />
             <%= f.password_field :password, autocomplete: "new-password" %>
           </div>
           <div class="field">
-            <%= f.label :password_confirmation %><br />
+            <%= f.label :パスワード（確認） %><br />
             <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
           </div>
           <div class="actions">
-            <%= f.submit "Sign up", class: "btn btn-sm btn-success" %>
+            <%= f.submit "登録", class: "btn btn-sm btn-success" %>
           </div>
         <% end %>
         <%= render "devise/shared/links" %>

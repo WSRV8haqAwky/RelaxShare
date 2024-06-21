@@ -1,4 +1,4 @@
-<main>
+<main class="bg-light">
     <p id="notice"><%= flash[:notice] %></p>
 
     <div class='container px-5 px-sm-0'>
@@ -18,12 +18,14 @@
         </table>
         <div class='row'>
           <%= link_to edit_user_path(@user), class: "btn btn-outline-secondary btn-block" do %>
-            <i class="fas fa-user-cog"></i>編集
+            <i class="fas fa-user-cog"></i> 編集
           <% end %>
         </div>
 
     　　  　<div class='row'>
-            <%= link_to "新規投稿", new_post_relax_path(@post_relax), class: "btn btn-success btn-block" %>
+            <%= link_to new_post_relax_path(@post_relax), class: "btn btn-success btn-block" do %>
+              <i class="fas fa-plus"></i> 新規投稿
+            <% end %>
           </div>
           <!-- form_withを用いて新規投稿フォームを作成しましょう。 -->
         </div>

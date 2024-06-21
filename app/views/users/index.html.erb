@@ -1,4 +1,4 @@
-<main>
+<main class="bg-light">
   <p  id="notice"><%= flash[:notice] %></p>
 
     <div class='container px-5 px-sm-0'>
@@ -23,7 +23,9 @@
         </div>
 
         <div class='row mt-4'>
-          <%= link_to "新規投稿", new_post_relax_path(@post_relax), class: "btn btn-success btn-block" %>
+          <%= link_to new_post_relax_path(@post_relax), class: "btn btn-success btn-block" do %>
+            <i class="fas fa-plus"></i> 新規投稿
+          <% end %>
         </div>
       </div>
 
@@ -42,7 +44,7 @@
                             <% end %>
                           </div>
                           <div class="col-9">
-                            <span><i class="fas fa-user"></i><%= link_to user.name, user_path(user.id),class:"text-dark" %></span>
+                            <span><i class="fas fa-user"></i> <b><%= link_to user.name, user_path(user.id),class:"text-dark" %></b></span>
                             <p class="card-text"><%= user.introduction %></p>
                           </div>
                         </div>
@@ -54,6 +56,8 @@
             </div>
           </div>
       </div>
+    </div>
+    </div>
 </main>
 
 
