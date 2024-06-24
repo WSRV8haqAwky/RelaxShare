@@ -1,9 +1,23 @@
-<footer class="bg-secondary">
+<footer class="bg-secondary text-white">
   <div class='container mt-5'>
-    <div class='row'>
-      <div class='mx-auto text-light'>
-        <p>CopyRight Infratop.inc</p>
+    <div class='row no-gutters'>
+      <div class="col-md-4">
+        <p>いやしを求める人のためのSNS</p>
+        <%= link_to "/" do %>
+        <h2 class="site-title text-white">Rela×Share</h2>
+        <% end %>
+      </div>
+      <div class="col-md-8">
+        <h6 class="text-white mt-2 mb-3">Link</h6>
+        <ul class="p-0 list-unstyled">
+          <li>
+            <%= link_to "会社概要", home_about_path, class:"text-white-50" %>
+          </li>
+          <li>
+            <a href="" title="License informations" class="text-white-50">プライバシーポリシー</a>
+          </li>
+        </ul>
+      </div>
       </div>
     </div>
-  </div>
 </footer>

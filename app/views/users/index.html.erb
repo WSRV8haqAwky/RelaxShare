@@ -1,10 +1,9 @@
-<main class="bg-light">
-  <p  id="notice"><%= flash[:notice] %></p>
+<main>
 
     <div class='container px-5 px-sm-0'>
     <div class='row'>
       <div class='col-md-3'>
-        <h2>プロフィール</h2>
+        <h2 class="mt-3">プロフィール</h2>
         <table class='table'>
           <tr>
             <%= attachment_image_tag @user, :profile_image, :fill, 100, 100, fallback: "default-image.jpg", class:"rounded-circle" %> <!-- 固定値 -->
@@ -30,11 +29,11 @@
       </div>
 
       <div class='col-md-8 offset-md-1'>
-        <h2>ユーザー</h2>
+        <h2 class="my-3">ユーザー</h2>
           <div class="card-list-container">
             <div class="row">
                 <% @users.each do |user| %>
-                  <div class="col-lg-6 col-md-8 col-sm-10 mt-5">
+                  <div class="col-lg-6 col-md-8 col-sm-10 mb-5">
                     <div class="card mx-auto shadow-lg h-100">
                       <div class="card-body">
                         <div class="row">
@@ -52,8 +51,10 @@
                     </div>
                   </div>
                   <% end %>
-                    <%= paginate @users %>
             </div>
+          </div>
+          <div class="pagination">
+            <%= paginate @users %>
           </div>
       </div>
     </div>

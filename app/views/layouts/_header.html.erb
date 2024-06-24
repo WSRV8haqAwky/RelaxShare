@@ -2,7 +2,7 @@
   <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #3CA660; opacity: 0.85;">
     <div class="container">
       <a class="navbar-brand" href="/">
-        <span>RelaxShare</span>
+        <span class="site-title text-white">Rela×Share</span>
       </a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -12,47 +12,47 @@
         <ul class="navbar-nav ml-auto">
           <% if user_signed_in? %>
             <li>
-             <%= link_to user_path(current_user), class: "nav-link text-light" do %>
+             <%= link_to user_path(current_user), class: "nav-link text-white" do %>
               <i class="fas fa-home"></i> ホーム
              <% end %>
             <!-- ログイン後のHomeリンクは未実装です。自分で調べて実装してみましょう -->
             </li>
             <li>
-             <%= link_to users_path, class: "nav-link text-light" do %>
+             <%= link_to users_path, class: "nav-link text-white" do %>
               <i class="fas fa-users"></i> ユーザー
              <% end %>
             <!-- ログイン後のUsersリンクは未実装です。自分で調べて実装してみましょう -->
             </li>
             <li>
-             <%= link_to post_relaxes_path, class: "nav-link text-light" do %>
+             <%= link_to post_relaxes_path, class: "nav-link text-white" do %>
               <i class="fas fa-book-open"></i> みんなの投稿
              <% end %>
             <!-- ログイン後のBooksリンクは未実装です。自分で調べて実装してみましょう -->
             </li>
 
             <li>
-             <%= link_to destroy_user_session_path, method: :delete, class: "nav-link text-light" do %>
+             <%= link_to destroy_user_session_path, method: :delete, class: "nav-link text-white" do %>
               <i class="fas fa-sign-out-alt"></i> ログアウト
              <% end %>
             </li>
           <% else %>
             <li>
-             <%= link_to root_path, class: "nav-link text-light" do %>
+             <%= link_to root_path, class: "nav-link text-white" do %>
               <i class="fas fa-home"></i> ホーム
              <% end %>
             </li>
             <li>
-             <%= link_to home_about_path, class: "nav-link text-light" do %>
+             <%= link_to home_about_path, class: "nav-link text-white" do %>
               <i class="fas fa-link"></i> 会社概要
              <% end %>
             </li>
             <li>
-             <%= link_to new_user_registration_path, class: "nav-link text-light" do %>
+             <%= link_to new_user_registration_path, class: "nav-link text-white" do %>
               <i class="fas fa-user-plus"></i> 新規登録
              <% end %>
             </li>
             <li>
-             <%= link_to new_user_session_path, class: "nav-link text-light" do %>
+             <%= link_to new_user_session_path, class: "nav-link text-white" do %>
               <i class="fas fa-sign-in-alt"></i> ログイン
              <% end %>
             </li>
