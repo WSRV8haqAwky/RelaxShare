@@ -1,4 +1,4 @@
-<main class="bg-light">
+<main>
     <div class='container'>
       <div class='row'>
         <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
@@ -23,7 +23,6 @@
              <label for="user_image">プロフィール画像</label>
              <%= f.attachment_field :profile_image, class: "form-control-file user_image" %>
             </div>
-          　　  <%= attachment_image_tag @user, :profile_image, :fill, 80, 80, fallback: "default-image.jpg",class:"mt-2" %>
             <div class="form-group">
              <label for="user_introduction">自己紹介文</label>
              <%= f.text_area :introduction, id:"user_introduction",class: "form-control introduction" %>
